@@ -2,11 +2,12 @@ library(shiny)
 library(shinydashboard)
 library(leaflet)
 library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
 library(ggplot2)
 
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
-world <- st_transform(world, crs = st_crs("+proj=longlat +datum=WGS84"))
 stkitts_nevis <- world[world$admin %in% c("Saint Kitts and Nevis"), ]
 
 
