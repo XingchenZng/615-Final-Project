@@ -74,7 +74,7 @@ ui <- dashboardPage(
                 )
               )
       ),
-     
+      
       tabItem(tabName = "demo",
               fluidRow(
                 box(
@@ -160,7 +160,7 @@ ui <- dashboardPage(
                     )
                   )
                 ),
-              
+                
                 box(
                   title = "Key Facts - Barbados",
                   status = "primary",
@@ -198,10 +198,10 @@ ui <- dashboardPage(
                 )
               )
       ),
-     
+      
       tabItem(tabName = "plot",
               fluidRow(
-          
+                
                 box(
                   title = "Population Comparison",
                   status = "primary",
@@ -211,7 +211,7 @@ ui <- dashboardPage(
                 )
               ),
               fluidRow(
-             
+                
                 box(
                   title = "Area Comparison",
                   status = "primary",
@@ -221,7 +221,7 @@ ui <- dashboardPage(
                 )
               ),
               fluidRow(
-              
+                
                 box(
                   title = "GDP Comparison",
                   status = "primary",
@@ -231,7 +231,7 @@ ui <- dashboardPage(
                 )
               ),
       ),
-    
+      
       tabItem(tabName = "SWOT",
               tags$p(
                 HTML("<strong>SWOT analysis of Saint Kitts and Nevis:</strong>")
@@ -304,7 +304,7 @@ server <- function(input, output) {
   
   Sys.setlocale("LC_TIME", "en_US.UTF-8")
   
- 
+  
   output$map_stkitts_nevis <- renderLeaflet({
     leaflet(data = stkitts_nevis) %>%
       addProviderTiles(providers$Esri.WorldImagery) %>%
@@ -351,7 +351,7 @@ server <- function(input, output) {
         labelOptions = labelOptions(noHide = TRUE, direction = "center", textOnly = TRUE)
       )
   })
-
+  
   output$ageDistributionPlot <- renderPlot({
     age_data <- data.frame(
       Age = c("0-14 years", "15-64 years", "65 years and over"),
@@ -385,7 +385,7 @@ server <- function(input, output) {
   
   
   
-
+  
   output$population_plot <- renderPlot({
     
     countries <- c("Saint Kitts and Nevis", "Antigua and Barbuda", "Barbados", "Dominica")
@@ -403,16 +403,15 @@ server <- function(input, output) {
   })
   
   output$GDP_plot <- renderPlot({
-   
+    
     countries <- c("Saint Kitts and Nevis", "Antigua and Barbuda", "Barbados", "Dominica")
     GDP <- c(1.8, 2.6, 5.436, 1)
     
     barplot(GDP, names.arg = countries, col = "black", main = "GDP Comparison", ylab = "GDP(in billion)")
   })
-
+  
   
 }
 
 shinyApp(ui, server)
-
 
